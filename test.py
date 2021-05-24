@@ -1,28 +1,16 @@
 import http.server
-from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
+import socketserver
 
-hostName = "localhost1"
-serverPort = 8080
-
-class MyServer(BaseHTTPRequestHandler):
+class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes("<html><head><title>try</title></head>", "utf-8"))
-        self.wfile.write(bytes("<body>", "utf-8"))
-        self.wfile.write(bytes("<p>This is your newly created webserver using jenkins.</p>", "utf-8"))
-        self.wfile.write(bytes("</body></html>", "utf-8"))
+        if self.path == '/':
+            self.path = 'mywebpage.html'
+        return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
-if __name__ == "__main__":        
-    webServer = HTTPServer((hostName, serverPort), MyServer)
-    print("Server started http://%s:%s" % (hostName, serverPort))
+handler_object = MyHttpRequestHandler
 
-    try:
-        webServer.serve_forever()
-    except KeyboardInterrupt:
-        pass
+PORT = 8000
+my_server = socketserver.TCPServer(("", PORT), handler_object)
 
-    webServer.server_close()
-    print("Server stopped.")
+
+my_server.serve_forever()

@@ -6,6 +6,6 @@ pipeline {
           git "https://github.com/AndreiBaetica1/test"
           }
     stage('test') {
-        sh 'python Tests.py'
+        sh 'python3 test.py'
     }
 }

@@ -6,7 +6,7 @@ pipeline {
           git "https://github.com/AndreiBaetica1/test"
           }
     stage('test') {
-        sh 'python3 test.py'
+     
         sh 'python3 -m  http.server 8000'
     }
 }

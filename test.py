@@ -12,7 +12,7 @@ class S(BaseHTTPRequestHandler):
         """This just generates an HTML document that includes `message`
         in the body. Override, or re-write this do do more interesting stuff.
         """
-        content = f"<html><body><h1>{message}</h1></body></html>"
+        content = f"<html><body><h1>{JENKINS}</h1></body></html>"
         return content.encode("utf8")  # NOTE: must return a bytes object!
 
     def do_GET(self):

@@ -3,7 +3,7 @@ import socketserver
 class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
-            self.path = 'mywebpage1.html'
+            self.path = 'mywebpage2.html'
         return http.server.SimpleHTTPRequestHandler.do_GET(self)
 # Create an object of the above class
 handler_object = MyHttpRequestHandler

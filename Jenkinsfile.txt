@@ -7,6 +7,6 @@ pipeline {
           }
     stage('test') {
      
-        sh 'python3 -m  http.server 8000'
+        sh 'python3 -m test.py'
     }
 }
